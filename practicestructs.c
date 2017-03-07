@@ -16,11 +16,16 @@ int (*get_format(char *s))(int, int)
 		{"%", form_perc},
 		{NULL, NULL}
 	};
-	int i = 0;
 
-	while (forms[i].form != NULL)
+	unsigned int i = 0;
+	while (formatss[i].form != NULL)
 	{
+		if (strcmp(formats[i].form, s) == 0)
+		{
+			return (formats[i].form);
+		}
 
+		i++;
 	}
 	return (NULL);
 }

@@ -1,20 +1,12 @@
-#include <stdio.h>
 #include <unistd.h>
-#define STDOUT 1
-void myputchar(const char *s)
-{
-	write(1, s, _strlen(s));
-}
-
 /**
- * _strlen - prints length string in integer
- * @s: string passed to function
- * Return: a
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
-int _strlen(char *s)
+int _putchar(const char *s)
 {
-	int a = 0;
-	while (*(s + a))
-		a++;
-	return (a);
+	return (write(1, &c, 1));
 }

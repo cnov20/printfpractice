@@ -10,39 +10,27 @@ int _printf(const char *format, ...)
 {
 	char *s;
 	va_list toprint;
-	int i = 0;
+	unsigned int i = 0;
+
+	form_t formats[] = {
+		{"i", form_int},
+		{"d", form_dec},
+		{"c", form_char},
+		{"s", form_str},
+		{"%", form_perc},
+		{NULL, NULL}
+	};
+
+	va_start(toprint, s);
 
 	while (format == NULL)
 	{
 		myputchar("\n");
 		return;
 	}
-	va_start(toprint, format);
-	while(format[i] == '%')
-	{
-		switch (format[i])
-		{
-		case 's':
-			s = va_arg(toprint, char*);
-			if (s == NULL)
-				s = "(nil)";
-			myputchar(s);
-			break;
-		case 'c':
-			myputchar(va_arg(toprint, int));
-			break;
-		case 'i':
-			myputchar(va_arg(toprint, int));
-			break;
-		case 'f':
-			myputchar(va_arg(toprint, double));
-			break;
-		case '%':
-			myputchar('%');
-			break;
-		}
-		i++;
-	}
+
 	va_end(toprint);
 	myputchar("\n");
+
+	return (0);
 }
